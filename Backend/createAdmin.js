@@ -6,9 +6,9 @@ const DB_URL = 'mongodb://localhost:27017/shop';
 
 mongoose.connect(DB_URL)
   .then(async () => {
-    const email = 'rithikamani614@gmail.com';
-    const password = 'manum2004';
-    const number = '7904713525';
+    const email = 'ragav9760@gmail.com';
+    const password = 'Ragav@8373';
+    const number = '6380962804';
 
     const existingAdmin = await User.findOne({ email });
     if (existingAdmin) {
