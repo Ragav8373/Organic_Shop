@@ -41,10 +41,10 @@ function Footer(){
                             <li className='footerp2'>Contact</li>
                             <li className='footerp4'><FaPhoneSquare style={{color:'#f8ca38',fontSize:'18px',marginRight:'10px'}}/>
                             Phone
-                            <p className='footerp5 p6'>+91 79047 13525</p>
+                            <p className='footerp5 p6'>+91 6380962804</p>
                             </li>
                             <li className='footerp4'><FaEnvelope style={{color:'#f8ca38',fontSize:'18px',marginRight:'10px'}} />Email
-                            <p className='footerp5 p6'>rithikamani614@gmail.com</p>
+                            <p className='footerp5 p6'>ragav9760@gmail.com</p>
                             </li>
                             <li className='footerp4'><FaMapMarker style={{color:'#f8ca38',fontSize:'18px',marginRight:'10px'}}/>Address
                             <p className='footerp5'>66 road, broklyn street new york
