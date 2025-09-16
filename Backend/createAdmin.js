@@ -10,10 +10,10 @@ mongoose.connect(DB_URL, {
   useUnifiedTopology: true
 })
   .then(async () => {
-    console.log(' Connected to MongoDB');
+    console.log('Connected to MongoDB');
 
     const email = 'ragav9760@gmail.com';
-    const password = 'ragav2004';
+    const password = 'Ragav@8373'; // <-- keep whichever password you want here
     const number = '6380962804';
 
     // Check if admin already exists
@@ -48,6 +48,6 @@ mongoose.connect(DB_URL, {
     process.exit(0);
   })
   .catch(err => {
-    console.error(' Error connecting to MongoDB:', err);
+    console.error('Error connecting to MongoDB:', err);
     process.exit(1);
   });
