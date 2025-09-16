@@ -47,7 +47,7 @@ function Footer(){
                             <p className='footerp5 p6'>ragav9760@gmail.com</p>
                             </li>
                             <li className='footerp4'><FaMapMarker style={{color:'#f8ca38',fontSize:'18px',marginRight:'10px'}}/>Address
-                            <p className='footerp5'>66 road, broklyn street new york
+                            <p className='footerp5'>66 road, gp street, cbe
                             </p>
                             </li>
                         </ul>

@@ -14,15 +14,15 @@ const Header = () => {
                 <ul className="li1">
                   <li>
                     <FaMap style={{ fontSize: '14px', color: '#f8ca38', marginRight: '10px' }} />
-                    88 Brooklyn Golden Street, New York
+                    66 road, gp street, cbe
                   </li>
                   <li>
                     <FaEnvelope style={{ fontSize: '14px', color: '#f8ca38', marginRight: '10px' }} />
-                    <p className="p3">rithikamani614@gmail.com</p>
+                    <p className="p3">ragav9760@gmail.com</p>
                   </li>
                   <li>
                     <FaPhoneSquareAlt style={{ fontSize: '14px', color: '#f8ca38', marginRight: '10px' }} />
-                    <p className="p3">+91 79047 13525</p>
+                    <p className="p3">+91 6380962804</p>
                   </li>
                 </ul>
               </div>
