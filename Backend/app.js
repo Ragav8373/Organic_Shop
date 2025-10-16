@@ -18,6 +18,8 @@ const productRoutes = require('./routes/product');
 const orderRoutes = require('./routes/order');
 const userRoutes = require('./routes/user'); 
 const adminRoutes = require('./routes/admin');
+const contactRoutes = require('./routes/contact');
+
 
 app.use(express.json());
 app.use(cors());
@@ -37,6 +39,8 @@ app.use('/api', productRoutes);
 app.use('/api', orderRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api', contactRoutes);
+
 
 app.post('/single', upload.single('image'), async (req, res) => {
   try {
