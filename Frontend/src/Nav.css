@@ -83,6 +83,11 @@
 .img1{
     position: relative;
     left: 10px;
+    width: 100px;
+}
+.og{
+    height: auto;
+    width: 150px;
 }
 .navbar-nav .nav-item .dropdown-menu .dropdown-item {
     color: #212529;  

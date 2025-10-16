@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Button, Offcanvas,Modal } from 'react-bootstrap';
 import { Container, Row, Col, Badge } from 'react-bootstrap';
 import { Link ,NavLink} from 'react-router-dom'; 
-import img1 from './images/logo.webp';
+import img1 from './images/ChatGPT_Image_Oct_16__2025__08_46_08_PM-removebg-preview.png';
 import { FaTwitter, FaFacebook, FaPinterest, FaInstagram,  FaEnvelope,  FaShoppingCart, FaSearch, FaBars, FaPhoneSquare, FaMapMarker } from 'react-icons/fa';
 // import { useNavigate } from 'react-router-dom';
 
@@ -145,7 +145,7 @@ function One({cartItems}){
         <Offcanvas show={show} onHide={handleClose} placement="end" className="custom-offcanvas">
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
-              <img src={img1} alt="" title="Fesho" />
+              <img src={img1} alt="" title="Fesho" className='og' />
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
@@ -174,7 +174,7 @@ function One({cartItems}){
                   </div>
                   <div style={{ display: 'inline-block' }} className="div5">
                     <h5>Phone</h5>
-                    <p style={{ color: '#797f7d', fontSize: '14px' }}>+1(307) 776-0608</p>
+                    <p style={{ color: '#797f7d', fontSize: '14px' }}>+91 6380962804</p>
                   </div>
                 </li>
                 <li>
@@ -183,7 +183,7 @@ function One({cartItems}){
                   </div>
                   <div style={{ display: 'inline-block' }} className="div5">
                     <h5>Email</h5>
-                    <p style={{ color: '#797f7d', fontSize: '14px' }}>needhelp@company.com</p>
+                    <p style={{ color: '#797f7d', fontSize: '14px' }}>Organic@company.com</p>
                   </div>
                 </li>
                 <li>
@@ -192,7 +192,7 @@ function One({cartItems}){
                   </div>
                   <div style={{ display: 'inline-block' }} className="div5">
                     <h5>Address</h5>
-                    <p style={{ color: '#797f7d', fontSize: '13px' }}>88 Brooklyn Golden Street, New York</p>
+                    <p style={{ color: '#797f7d', fontSize: '13px' }}>66 road, gp street, cbe</p>
                   </div>
                 </li>
               </ul>

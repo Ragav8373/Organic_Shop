@@ -1,5 +1,5 @@
 import { Row, Col,Container} from 'react-bootstrap';
-import fimage1 from './images/logo-2.png';
+import fimage1 from './images/ChatGPT_Image_Oct_16__2025__08_46_08_PM-removebg-preview.png';
 import { FaTwitter, FaFacebook, FaPinterest, FaInstagram, FaMapMarker, FaPhoneSquare, FaEnvelope } from 'react-icons/fa';
 function Footer(){
     return(
@@ -9,7 +9,7 @@ function Footer(){
                 <Row>
                     <Col sm={12} md={6} lg={4}>
                     <div className='f1'>
-                        <img src={fimage1} alt="" />
+                        <img src={fimage1} alt=""  />
                         <p className='footerp1'>We’re providing every day fresh and quality products for you.</p>
                         <div>
                             <ul className='footerul'>

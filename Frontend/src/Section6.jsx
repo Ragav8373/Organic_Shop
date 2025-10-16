@@ -100,19 +100,19 @@ function Section6(){
           <Container className='sec6container'>
             <Row className='sec6row4'>
               <Col>
-              <img src={sec6img1} alt="" className='sec6img' />
+              {/* <img src={sec6img1} alt="" className='sec6img' /> */}
               </Col>
               <Col>           
-                 <img src={sec6img2} alt="" className='sec6img sec6image11' />
+                 {/* <img src={sec6img2} alt="" className='sec6img sec6image11' /> */}
               </Col>
               <Col> 
-                  <img src={sec6img3} alt="" className='sec6img sec6image11' />
+                  {/* <img src={sec6img3} alt="" className='sec6img sec6image11' /> */}
               </Col>
               <Col>  
-                <img src={sec6img4} alt="" className='sec6img sec6image11' />
+                {/* <img src={sec6img4} alt="" className='sec6img sec6image11' /> */}
               </Col>
               <Col>
-              <img src={sec6img5} alt=""  className='sec6img sec6image'/>
+              {/* <img src={sec6img5} alt=""  className='sec6img sec6image'/> */}
               </Col>
               <hr  className='sec6hr'/>
             </Row>

@@ -3073,6 +3073,12 @@
     margin-top: 100px;
     margin-left: 50px;
 }
+.f1 img{
+    width: 200px;
+    height: auto;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
 .footerp1{
    font-size: 20px;
    line-height: 32px;
