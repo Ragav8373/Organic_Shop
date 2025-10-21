@@ -216,7 +216,7 @@ const LogForm = () => {
         alert('Login successful!');
         
         // Navigate to checkout page
-        navigate('/checkout');
+        navigate('/order-summary');
       } else {
         if (result.message.includes('Invalid email')) {
           setError('email', { type: 'manual', message: 'Email not found' });

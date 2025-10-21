@@ -32,7 +32,9 @@ import Checkout from './Checkout';
 
 function App() {
 
-  const [cartItems, setCartItems] = useState([]);
+const [cartItems, setCartItems] = useState(
+  JSON.parse(localStorage.getItem('cartItems')) || []
+);
 
   return (
      <div>
@@ -63,7 +65,9 @@ function App() {
           <Route path='/admin/products' element={<ProductList/>}/>
           <Route path='/sidebar' element={<Sidebar/>}/>
           <Route path='/admin/users' element={<UserList/>}/>
-          <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+          {/* <Route path="/checkout" element={<Checkout cartItems={cartItems} />} /> */}
+          <Route path="/checkout" element={<Checkout cartItems={cartItems} setCartItems={setCartItems} />} />
+
           <Route path="/order-summary" element={<OrderSummary cartItems={cartItems} setCartItems={setCartItems} />} />
 
 

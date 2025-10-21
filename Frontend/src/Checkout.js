@@ -3,48 +3,54 @@ import { useForm } from "react-hook-form";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const Checkout = ({ cartItems = [] }) => {
+const Checkout = ({ cartItems = [], setCartItems }) => {
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
   const paymentMethod = watch("paymentMethod");
 
   const handleCheckout = async (data) => {
-  try {
-    const payload = {
-      ...data,
-      cartItems: cartItems.map(item => ({
-        productId: item.product._id,
-        name: item.product.name,
-        price: item.product.price,
-        qty: item.qty,
-      })),
-      totalItems: cartItems.reduce((acc, item) => acc + item.qty, 0),
-      totalPrice: cartItems.reduce((acc, item) => acc + item.product.price * item.qty, 0),
-    };
+    try {
+      const payload = {
+        ...data,
+        cartItems: cartItems.map(item => ({
+          productId: item.product._id,
+          name: item.product.name,
+          price: item.product.price,
+          qty: item.qty,
+        })),
+        totalItems: cartItems.reduce((acc, item) => acc + item.qty, 0),
+        totalPrice: cartItems.reduce((acc, item) => acc + item.product.price * item.qty, 0),
+      };
 
-    const res = await fetch('http://localhost:8000/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+      const res = await fetch('http://localhost:8000/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
 
-    const result = await res.json();
+      const result = await res.json();
 
-    if (res.ok) {
-      localStorage.setItem('deliveryId', result.deliveryId);
-      localStorage.setItem('deliveryDetails', JSON.stringify(payload));
-      alert('✅ Order placed successfully!');
-      navigate('/order-summary');
-    } else {
-      alert(result.message || 'Failed to save details.');
+      if (res.ok) {
+        localStorage.setItem('deliveryId', result.deliveryId);
+        localStorage.setItem('deliveryDetails', JSON.stringify(payload));
+        alert('✅ Order placed successfully!');
+
+        // ✅ Clear cart after successful checkout
+        localStorage.removeItem('cartItems');
+        if (typeof setCartItems === 'function') setCartItems([]);
+
+        // ✅ Redirect to home page
+        navigate('/');
+      } else {
+        alert(result.message || 'Failed to save details.');
+      }
+    } catch (err) {
+      console.error('Checkout Error:', err);
+      alert('Something went wrong while saving your order.');
     }
-  } catch (err) {
-    console.error('Checkout Error:', err);
-    alert('Something went wrong while saving your order.');
-  }
-};
+  };
 
-
+  // If cart is empty
   if (cartItems.length === 0) {
     return (
       <Container className="mt-5">
@@ -62,31 +68,17 @@ const Checkout = ({ cartItems = [] }) => {
   const totalPrice = cartItems.reduce((acc, item) => acc + item.product.price * item.qty, 0);
 
   return (
-    <Container className="mt-5 mb-5" style={{ maxWidth: '800px' }}>
+    <Container className="mt-5 mb-5 checkout-container" style={{ maxWidth: '800px' }}>
       <h2 className="text-center mb-4">Delivery Details</h2>
 
-      {/* Order Summary Card */}
-      <div className="card mb-4 p-3 bg-light">
-        <h5>Order Summary</h5>
-        <hr />
-        <div className="d-flex justify-content-between">
-          <span>Total Items:</span>
-          <strong>{totalItems}</strong>
-        </div>
-        <div className="d-flex justify-content-between">
-          <span>Total Amount:</span>
-          <strong>₹{totalPrice.toFixed(2)}</strong>
-        </div>
-      </div>
-
-      <form onSubmit={handleSubmit(handleCheckout)}>
+      <form onSubmit={handleSubmit(handleCheckout)} className="checkout-form">
         {/* Name Fields */}
         <Row className="mb-3">
           <Col md={6}>
             <label className="form-label">First Name *</label>
             <input 
-              type="text" 
-              className="form-control" 
+              type="text"
+              className="form-control"
               {...register("firstName", { required: "First name is required" })}
             />
             <small className="text-danger">{errors.firstName?.message}</small>
@@ -94,8 +86,8 @@ const Checkout = ({ cartItems = [] }) => {
           <Col md={6}>
             <label className="form-label">Last Name *</label>
             <input 
-              type="text" 
-              className="form-control" 
+              type="text"
+              className="form-control"
               {...register("lastName", { required: "Last name is required" })}
             />
             <small className="text-danger">{errors.lastName?.message}</small>
@@ -107,8 +99,8 @@ const Checkout = ({ cartItems = [] }) => {
           <Col>
             <label className="form-label">Mobile Number *</label>
             <input 
-              type="tel" 
-              className="form-control" 
+              type="tel"
+              className="form-control"
               {...register("mobile", { 
                 required: "Mobile number is required",
                 pattern: {
@@ -126,8 +118,8 @@ const Checkout = ({ cartItems = [] }) => {
           <Col>
             <label className="form-label">Street Address *</label>
             <input 
-              type="text" 
-              className="form-control" 
+              type="text"
+              className="form-control"
               placeholder="House No., Building Name, Street"
               {...register("street", { required: "Street address is required" })}
             />
@@ -140,8 +132,8 @@ const Checkout = ({ cartItems = [] }) => {
           <Col md={4}>
             <label className="form-label">City *</label>
             <input 
-              type="text" 
-              className="form-control" 
+              type="text"
+              className="form-control"
               {...register("city", { required: "City is required" })}
             />
             <small className="text-danger">{errors.city?.message}</small>
@@ -149,8 +141,8 @@ const Checkout = ({ cartItems = [] }) => {
           <Col md={4}>
             <label className="form-label">State *</label>
             <input 
-              type="text" 
-              className="form-control" 
+              type="text"
+              className="form-control"
               {...register("state", { required: "State is required" })}
             />
             <small className="text-danger">{errors.state?.message}</small>
@@ -158,8 +150,8 @@ const Checkout = ({ cartItems = [] }) => {
           <Col md={4}>
             <label className="form-label">Pincode *</label>
             <input 
-              type="text" 
-              className="form-control" 
+              type="text"
+              className="form-control"
               {...register("pincode", { 
                 required: "Pincode is required",
                 pattern: {
@@ -177,8 +169,8 @@ const Checkout = ({ cartItems = [] }) => {
           <Col>
             <label className="form-label">Landmark (Optional)</label>
             <input 
-              type="text" 
-              className="form-control" 
+              type="text"
+              className="form-control"
               placeholder="Near hospital, mall, etc."
               {...register("landmark")}
             />
@@ -191,23 +183,23 @@ const Checkout = ({ cartItems = [] }) => {
             <label className="form-label d-block mb-2">Payment Method *</label>
             <div className="form-check form-check-inline">
               <input 
-                type="radio" 
-                className="form-check-input" 
+                type="radio"
+                className="form-check-input me-2"
                 id="cod"
                 value="COD"
                 {...register("paymentMethod", { required: "Please select a payment method" })}
               />
-              <label className="form-check-label" htmlFor="cod">Cash on Delivery</label>
+              <label className="form-check-label" htmlFor="cod ">Cash on Delivery</label>
             </div>
             <div className="form-check form-check-inline">
               <input 
-                type="radio" 
-                className="form-check-input" 
+                type="radio"
+                className="form-check-input me-2"
                 id="online"
                 value="Online"
                 {...register("paymentMethod", { required: "Please select a payment method" })}
               />
-              <label className="form-check-label" htmlFor="online">Online Payment</label>
+              <label className="form-check-label" htmlFor="online ">Online Payment</label>
             </div>
             <br />
             <small className="text-danger">{errors.paymentMethod?.message}</small>
