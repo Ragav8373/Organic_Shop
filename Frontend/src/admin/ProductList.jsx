@@ -46,7 +46,7 @@ const AdminProductList = () => {
   };
 
   const handleAddProduct = () => {
-    navigate('/admin/add-product');
+    navigate('/addproduct');
   };
 
   return (
@@ -78,7 +78,7 @@ const AdminProductList = () => {
           <td>{prod.category}</td>
           <td>{prod.stock}</td>
           <td className="action-buttons">
-            <button onClick={() => handleEdit(prod._id)}>Edit</button>
+            {/* <button onClick={() => handleEdit(prod._id)}>Edit</button> */}
             <button onClick={() => handleDelete(prod._id)}>Delete</button>
           </td>
         </tr>

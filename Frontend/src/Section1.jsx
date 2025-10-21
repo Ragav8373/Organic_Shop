@@ -10,7 +10,6 @@ import image7 from './images/object-5.png';
 import image8 from './images/object-4.png'
 
 
-
 function Section1() {
   return (
     <div className='section1'>

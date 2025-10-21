@@ -19,6 +19,17 @@ import RegisterForm from './Form';
 import LoginForm from './LoginForm';
 import OrderSummary from './OrderSummary';
 import AddProduct from './admin/AddProduct';
+import AdminDashboard from './admin/AdminDashboard';
+import AdminLogin from './admin/AdminLogin';
+import AdminOrderList from './admin/AdminOrderList';
+import EditProduct from './admin/EditProduct';
+import ProductList from './admin/ProductList';
+import UserList from './admin/UserList';
+import Sidebar from './admin/Sidebar';
+import Checkout from './Checkout';
+
+
+
 function App() {
 
   const [cartItems, setCartItems] = useState([]);
@@ -45,6 +56,19 @@ function App() {
          <Route path='/login' element={<LoginForm/>}/>
          <Route path='/order-summary' element={<OrderSummary cartItems={cartItems} setCartItems={setCartItems}/>}/>
           <Route path='/addproduct' element={<AddProduct cartItems={cartItems} setCartItems={setCartItems}/>}/>
+          <Route path='/admin/dashboard' element={<AdminDashboard/>}/>
+          <Route path='/admin/login' element={<AdminLogin/>}/>
+          <Route path='/admin/orders' element={<AdminOrderList/>}/>
+          <Route path='/editproduct' element={<EditProduct/>}/>
+          <Route path='/admin/products' element={<ProductList/>}/>
+          <Route path='/sidebar' element={<Sidebar/>}/>
+          <Route path='/admin/users' element={<UserList/>}/>
+          <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+          <Route path="/order-summary" element={<OrderSummary cartItems={cartItems} setCartItems={setCartItems} />} />
+
+
+
+      
 
       </Routes>
     </Router>

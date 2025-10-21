@@ -10,7 +10,7 @@ export default function ProductCard({product}){
                         <Card.Body>
                          <Card.Title >
                             <Link to={"/product/"+product._id} className=' sec5card-title'><h4 >{product.name}</h4></Link>
-                         <p className="sec5p3">${product.price}.00</p>
+                         <p className="sec5p3">₹{product.price}.00</p>
                          </Card.Title>
                         <Card.Text >
                             <ul className='sec5ul'>

@@ -144,7 +144,7 @@ function placeOrderHandler() {
                                                 {item.product.name}
                                             </Link>
                                         </td>
-                                        <td>${item.product.price.toFixed(2)}</td>
+                                        <td>₹{item.product.price.toFixed(2)}</td>
                                         <td>
                                             <div className="stockCounter d-flex align-items-center justify-content-center">
                                                 <button
