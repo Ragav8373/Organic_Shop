@@ -91,7 +91,7 @@ function One({cartItems}){
                     {totalQty}
                   </Badge>
                 </Button>
-                <Link to="products"><button className="btn1">SHOP NOW</button></Link>
+                <Link to="/products"><button className="btn1">SHOP NOW</button></Link>
                 <button className="icon1" onClick={handleShow}>
                   <FaBars style={{ fontSize: '25' }} />
                 </button>

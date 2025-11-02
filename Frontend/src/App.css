@@ -4912,3 +4912,63 @@ a[data-toggle='collapse'] {
     padding: 10px;
   }
 }
+
+
+
+
+
+
+
+
+.category-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+/* Default category button style */
+.cat-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  letter-spacing: .5px;
+  margin-top: 20px;
+}
+
+/* Category Colors */
+.cat-btn.all { background: #6c757d; }         /* Grey */
+.cat-btn.fruit { background: #ff4d4d; }       /* Red - fruit */
+.cat-btn.vegetables { background: #28a745; }  /* Green - vegetables */
+.cat-btn.spices { background: #d4a017; }      /* Yellow / Spice color */
+.cat-btn.dried { background: #8b5a2b; }       /* Brown / dry nuts */
+
+/* Hover effect */
+.cat-btn:hover {
+  transform: scale(1.08);
+  opacity: 0.9;
+}
+
+/* Active / Selected button */
+.cat-btn.active {
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.18);
+  transform: scale(1.12);
+  border: 2px solid white;
+}
+
+.Shopul {
+    display: flex;
+    list-style: none;
+    color: rgb(25, 23, 23);
+    margin-left: 138px;
+    gap: 30px;              /* spacing between items */
+    align-items: center;    /* vertically align */
+}
+.Shopul li {
+    cursor: pointer;
+    font-weight: 500;
+}

@@ -12,7 +12,10 @@ const productSchema = new mongoose.Schema({
       image: { type: String }
     }
   ],
-  category: { type: String },
+  category: {
+    type: String,
+    required: true
+  },
   seller: { type: String },
   numOfReviews: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now }

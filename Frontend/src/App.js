@@ -27,7 +27,12 @@ import ProductList from './admin/ProductList';
 import UserList from './admin/UserList';
 import Sidebar from './admin/Sidebar';
 import Checkout from './Checkout';
-
+import Shop from './Shop';
+import Fruits from './Fruits';
+import Spices from './Spices';
+import Vegetables from './Vegetables'
+import DriedProducts from './DriedProducts'
+import CategoryPage from './CategoryPage';
 
 
 function App() {
@@ -69,10 +74,13 @@ const [cartItems, setCartItems] = useState(
           <Route path="/checkout" element={<Checkout cartItems={cartItems} setCartItems={setCartItems} />} />
 
           <Route path="/order-summary" element={<OrderSummary cartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path='/shop' element={<Shop/>}/>
+           <Route path='/fruits' element={<Fruits/>}/>
+          <Route path='/vegetables' element={<Vegetables/>}/>
+          <Route path='/spices' element={<Spices/>}/>
+           <Route path='/dried' element={<DriedProducts/>}/>
+          <Route path="/category/:name" element={<CategoryPage />} />
 
-
-
-      
 
       </Routes>
     </Router>
