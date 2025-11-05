@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { Container, Row } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // ✅ add this
+
 
 export default function Fruits() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate(); // ✅ create navigate function
 
   useEffect(() => {
     fetch(process.env.REACT_APP_API_URL + `/products?category=fruits`)
@@ -26,6 +29,15 @@ export default function Fruits() {
       </div>
 
       <Container style={{ marginTop: "20px" }}>
+          <div className="category-buttons">
+            <button className="cat-btn all" onClick={() => navigate("/products")}>All</button>
+             <button className="cat-btn fruit" onClick={() => navigate("/fruits")}>Fruit</button>
+             <button className="cat-btn vegetables" onClick={() => navigate("/vegetables")}>Vegetables</button>
+             <button className="cat-btn spices" onClick={() => navigate("/spices")}>Spices</button>
+            <button className="cat-btn dried" onClick={() => navigate("/dried")}>Dried Products</button>
+          </div>
+
+
         <Row>
           {products?.map(p => (
             <ProductCard key={p._id} product={p} />

@@ -4919,56 +4919,81 @@ a[data-toggle='collapse'] {
 
 
 
-
+/* Category Buttons Wrapper */
 .category-buttons {
   display: flex;
-  gap: 12px;
-  margin-bottom: 25px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
 }
 
-/* Default category button style */
+/* Category Button – White Minimal Design */
 .cat-btn {
   padding: 10px 20px;
   border-radius: 10px;
-  font-weight: 600;
-  border: none;
+  font-weight: 500;
+  border: 1px solid #ddd;
   cursor: pointer;
+  background-color: #fff;
+  color: #333;
+  letter-spacing: 0.3px;
   transition: all 0.3s ease;
-  color: white;
-  letter-spacing: .5px;
-  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Category Colors */
-.cat-btn.all { background: #6c757d; }         /* Grey */
-.cat-btn.fruit { background: #ff4d4d; }       /* Red - fruit */
-.cat-btn.vegetables { background: #28a745; }  /* Green - vegetables */
-.cat-btn.spices { background: #d4a017; }      /* Yellow / Spice color */
-.cat-btn.dried { background: #8b5a2b; }       /* Brown / dry nuts */
-
-/* Hover effect */
+/* Hover Effect */
 .cat-btn:hover {
-  transform: scale(1.08);
-  opacity: 0.9;
+  background-color: #f7f7f7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Active / Selected button */
+/* Active Button */
 .cat-btn.active {
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.18);
-  transform: scale(1.12);
-  border: 2px solid white;
+  border-color: #003c38;
+  color: #003c38;
+  box-shadow: 0 4px 10px rgba(0, 60, 56, 0.2);
+  background-color: #f0fdfa;
 }
 
+/* Shop Navigation */
 .Shopul {
-    display: flex;
-    list-style: none;
-    color: rgb(25, 23, 23);
-    margin-left: 138px;
-    gap: 30px;              /* spacing between items */
-    align-items: center;    /* vertically align */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 40px;
+  padding: 0;
+  margin: 20px 0;
 }
+
 .Shopul li {
-    cursor: pointer;
-    font-weight: 500;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #333;
+  position: relative;
+  transition: color 0.3s ease;
 }
+
+/* Hover & Active Indicator Line */
+.Shopul li:hover {
+  color: #003c38;
+}
+
+.Shopul li::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #003c38;
+  transition: width 0.3s ease;
+}
+
+.Shopul li:hover::after {
+  width: 100%;
+}
+
