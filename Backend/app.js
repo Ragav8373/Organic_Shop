@@ -85,8 +85,6 @@
 
 
 
-
-
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
@@ -94,6 +92,7 @@ const path = require('path');
 const cors = require('cors');
 const multer = require('multer');
 
+// Load environment variables
 dotenv.config({ path: path.join(__dirname, 'config', 'config.env') });
 
 // Connect to MongoDB
@@ -103,10 +102,10 @@ connectDb();
 // Models
 const Product = require('./models/productModel');
 
-// Middleware setup
+// Middleware
 app.use(express.json());
 
-// ✅ Enable CORS before routes
+// ✅ Enable CORS for frontend
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -116,42 +115,39 @@ app.use(cors({
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Multer setup
+// Multer setup for file uploads
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads');
-  },
-  filename: function (req, file, cb) {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  }
+  destination: (req, file, cb) => cb(null, './uploads'),
+  filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`)
 });
 const upload = multer({ storage });
 
-// Import routes
+// ==========================
+// Routes
+// ==========================
 const productRoutes = require('./routes/product');
-const orderRoutes = require('./routes/order');
-const userRoutes = require('./routes/user'); 
-const adminRoutes = require('./routes/admin');
+const orderRoutes = require('./routes/order');        // GET /orders -> admin page
+const userRoutes = require('./routes/user');
+const adminRoutes = require('./routes/admin');        // POST /login
 const contactRoutes = require('./routes/contact');
-const checkoutRoutes = require("./routes/checkoutRoutes");
+const checkoutRoutes = require("./routes/checkoutRoutes"); // POST /checkout
 
-// Use routes
-app.use('/api', productRoutes);
-app.use('/api', orderRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api', contactRoutes);
-app.use('/api/checkout', checkoutRoutes); // ✅ moved after CORS + express.json
+// Mount routes
+app.use('/api', productRoutes);           // Products
+app.use('/api/admin', orderRoutes);       // Admin fetch orders
+app.use('/api/users', userRoutes);        // Users
+app.use('/api/admin', adminRoutes);       // Admin login
+app.use('/api', contactRoutes);           // Contact
+app.use('/api/checkout', checkoutRoutes); // Checkout
 
+// ==========================
 // File upload route
+// ==========================
 app.post('/single', upload.single('image'), async (req, res) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No file uploaded.' });
-    }
+    if (!req.file) return res.status(400).json({ error: 'No file uploaded.' });
 
     const { name, price, ratings, category, stock, description } = req.body;
-
     const imagePath = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
 
     const product = await Product.create({
@@ -174,9 +170,8 @@ app.post('/single', upload.single('image'), async (req, res) => {
   }
 });
 
+// ==========================
 // Start server
+// ==========================
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-});
-
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

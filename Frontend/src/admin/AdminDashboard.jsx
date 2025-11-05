@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 
@@ -21,19 +19,20 @@ export default function Dashboard() {
         setOutOfStock(outOfStockCount);
       });
 
-    // Orders
-    fetch('http://localhost:8000/api/orders')
-      .then(res => res.json())
-      .then(data => {
-        const orderList = data.orders || [];
-        setOrders(orderList);
+// Orders
+fetch('http://localhost:8000/api/admin/orders')  // ✅ correct endpoint
+  .then(res => res.json())
+  .then(data => {
+    const orderList = data.orders || [];
+    setOrders(orderList);
 
-        const total = orderList.reduce((sum, o) => {
-          return sum + o.items.reduce((s, i) => s + i.price * i.qty, 0);
-        }, 0);
+    const total = orderList.reduce((sum, o) => {
+      return sum + o.items.reduce((s, i) => s + i.price * i.qty, 0);
+    }, 0);
 
-        setTotalAmount(total);
-      });
+    setTotalAmount(total);
+  });
+
 
     // Users
     fetch('http://localhost:8000/api/users/list')
