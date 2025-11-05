@@ -7,8 +7,11 @@ import image13 from './images/cat-2.jpg';
 import image14 from './images/cat-3.jpg';
 import image15 from './images/cat-4.jpg';
 import { FaCheckCircle,FaPlay } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 function Section3(){
+  const navigate = useNavigate();
     return(
         <div className="bg7">
            <div className='text7'>
@@ -25,7 +28,7 @@ function Section3(){
                 </Col>
                 <Col  sm={12} md={12} lg={6} xl={6} className='cl2'>
                 <div className='text6'>
-                <p className='p7'>Welcome to Fesho</p>
+                <p className='p7'>Welcome to Organic shop</p>
                 <h2 className='p8'>Be healthy & eat only pure organic food</h2>
                 <p className='p9'>Lorem ipsum is simply free text available dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt simply free ut labore et dolore magna aliqua.</p>
                 <Row className='p11'>
@@ -38,7 +41,8 @@ function Section3(){
                 <p className='p10'>Lorem ipsum dolor sited amet consectetur notted.</p>
                 </Col>
                 </Row>
-                <button className='btn10'>DESCOVER MORE</button>
+                {/* <button className='btn10'>DESCOVER MORE</button> */}
+                 <button className="btn10" onClick={() => navigate("/Services")}>DESCOVER MORE</button>
                 </div>
                 </Col>
             </Row>

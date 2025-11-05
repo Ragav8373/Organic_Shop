@@ -1,8 +1,9 @@
 import { Row, Col,Container} from 'react-bootstrap';
-
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Section4 = () => {
+  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -93,7 +94,8 @@ const Section4 = () => {
             <h3>We’re leaders in  organic market</h3>
           </div>
           <div className="sec4text4">
-            <button>DISCOVER MORE</button>
+            {/* <button>DISCOVER MORE</button> */}
+            <button  onClick={() => navigate("/contact")}>DESCOVER MORE</button>
           </div>
         </div>
       </div>

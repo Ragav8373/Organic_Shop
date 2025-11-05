@@ -8,9 +8,12 @@ import image5 from './images/object-6.webp';
 import image6 from './images/object-3.png';
 import image7 from './images/object-5.png';
 import image8 from './images/object-4.png'
+import { useNavigate } from 'react-router-dom';
+
 
 
 function Section1() {
+  const navigate = useNavigate();
   return (
     <div className='section1'>
       <div className="bg2"></div>
@@ -28,7 +31,8 @@ function Section1() {
                   <h1 className='text2'>Healthy
                     <br></br>
                    Organic Food</h1>
-                   <button className='btn6'>DESCOVER MORE</button>
+                   {/* <button className='btn6'>DESCOVER MORE</button> */}
+                     <button className="btn6" onClick={() => navigate("/products")}>DESCOVER MORE</button>
                    <Image src={image5}  className='object4'/>
                 </div>
                 </Col>
@@ -55,7 +59,8 @@ function Section1() {
                   <h1 className='text2'>Healthy
                     <br></br>
                    Organic Food</h1>
-                   <button className='btn6'>DESCOVER MORE</button>
+                   {/* <button className='btn6'>DESCOVER MORE</button> */}
+                    <button className="btn6" onClick={() => navigate("/products")}>DESCOVER MORE</button>
                    <Image src={image5}  className='object4'/>
                 </div>
                 </Col>
