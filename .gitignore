@@ -1,3 +1,5 @@
 config.env
 node_modules/
 *.zip
+Backend/config/config.env
+*.env
